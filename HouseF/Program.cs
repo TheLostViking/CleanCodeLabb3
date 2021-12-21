@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Här lägger vi Factory");
+﻿using HouseF;
+
+HouseFactory factory = new HouseFactory();
+House house = factory.CreateHouse("highcosthouse");
+
+Console.WriteLine(house);
