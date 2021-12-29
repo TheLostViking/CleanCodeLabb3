@@ -55,5 +55,15 @@ namespace HouseFB.Tests
         {
             Assert.AreEqual(true, _testHouse.HasSwimmingPool);
         }
+
+        [Test]
+        public void Build_CheckEvaluations()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _testBuilder.SetParkingSpaces(1).SetNoOfRooms(0).Build());
+            Assert.That(ex.Message, Is.EqualTo("The house needs atleast one room/window."));
+
+            var ex2 = Assert.Throws<ArgumentException>(() => _testBuilder.SetParkingSpaces(0).SetNoOfRooms(1).SetNoOfWindows(1).Build());
+            Assert.That(ex2.Message, Is.EqualTo("You have to have atleast 1 parking spot!"));
+        }
     }
 }
